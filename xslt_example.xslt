@@ -5,13 +5,13 @@
    <xsl:text>&#xa;</xsl:text>
    <doc  xmlns="http://www.w3.org/TR/html4/">
    <xsl:text>&#xa;</xsl:text>
+   <head>
+   <xsl:text>&#xa;</xsl:text>
      <lang>
       <xsl:value-of select="html/@lang" />
      </lang>
    <xsl:text>&#xa;</xsl:text>
-   <title>
-      <xsl:value-of select="//title"/>
-   </title>
+   <xsl:apply-templates select="//title"/>
    <xsl:text>&#xa;</xsl:text>
    <description>
      <xsl:value-of select="//meta[@name='description']/@content"/>
@@ -29,17 +29,30 @@
      <xsl:value-of select="//meta[@name='twitter:data2']/@content"/>
    </est_reading_time>
    <xsl:text>&#xa;</xsl:text>
-   <transcript>
+   </head>
+   <xsl:text>&#xa;</xsl:text>
+   <body>
    <xsl:for-each select="//p[@style='text-align: justify;']">
       <xsl:text>&#xa;</xsl:text>
-      <p>
       <xsl:value-of select="."/>
-      </p>
     </xsl:for-each>
    <xsl:text>&#xa;</xsl:text>
-   </transcript>
+   </body>
    <xsl:text>&#xa;</xsl:text>
    </doc> 
+ </xsl:template>
+  
+ <xsl:template match="//title">
+   <xsl:analyze-string select="." regex="(.*): (.*) \((\d+)\)">
+     <xsl:matching-substring>
+       <comedian><xsl:value-of select="regex-group(1)"/></comedian>
+       <xsl:text>&#xa;</xsl:text>
+       <title><xsl:value-of select="regex-group(2)"/></title>
+       <xsl:text>&#xa;</xsl:text>
+       <year><xsl:value-of select="regex-group(3)"/></year>
+     </xsl:matching-substring>
+   </xsl:analyze-string>
+   
  </xsl:template>
 
 
