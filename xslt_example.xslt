@@ -34,7 +34,7 @@
    <body>
    <xsl:for-each select="//p[@style='text-align: justify;']">
       <xsl:text>&#xa;</xsl:text>
-      <xsl:value-of select="."/>
+      <xsl:value-of select="." disable-output-escaping="yes"/>
     </xsl:for-each>
    <xsl:text>&#xa;</xsl:text>
    </body>
