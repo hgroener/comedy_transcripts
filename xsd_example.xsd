@@ -1,43 +1,137 @@
- <?xml version="1.0"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-
-<xs:element name="head">
-  <xs:complexType>
-    <xs:sequence>
-      <xs:element name="lang" type="xs:string"/>
-	  <xs:element name="comedian" type="xs:string"/>
-      <xs:element name="title" type="xs:string"/>
-	  <xs:element name="year" type="nonNegativeInteger"/>
-      <xs:element name="description" type="xs:string"/>
-      <xs:element name="link" type="xs:anyURI"/>
-	  <xs:element name="author" type="xs:string"/>
-	  <xs:element name="est_reading_time" type="xs:string"/>
-    </xs:sequence>
-  </xs:complexType>
-</xs:element>
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="https://www.w3schools.com"
+	xmlns="https://www.w3schools.com" elementFormDefault="qualified">
 
 
-<xs:element name="body">
-  <xs:complexType mixed="true">
-    <xs:sequence>
+	<xsd:simpleType name="nonNegativeInteger" id="nonNegativeInteger">
+		<xsd:restriction base="xsd:integer">
+			<xsd:minInclusive value="0"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:element name="doc">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="head">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="lang" type="xsd:string"/>
+							<xsd:element name="comedian" type="xsd:string"/>
+							<xsd:element name="title" type="xsd:string"/>
+							<xsd:element name="year" type="xsd:nonNegativeInteger"/>
+							<xsd:element name="description" type="xsd:string"/>
+							<xsd:element name="link" type="xsd:anyURI"/>
+							<xsd:element name="author" type="xsd:string"/>
+							<xsd:element name="est_reading_time" type="xsd:string"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+
+
+				<xsd:element name="body">
+					<!-- can contain text outside of joke elements -->
+					<xsd:complexType mixed="true">
+						<xsd:sequence>
+							<xsd:choice minOccurs="0" maxOccurs="unbounded">
+								<xsd:group ref="markUpGroup"/>
+								<xsd:element name="joke">
+									<!-- not mixed because jokes should only consist of a setup and a punchline - might need to be changed later. -->
+									<xsd:complexType>
+										<xsd:sequence>
+											<xsd:element name="setup" type="utteranceType"/>
+											<xsd:element name="punchline" type="punchlineType"/>
+										</xsd:sequence>
+									</xsd:complexType>
+								</xsd:element>
+							</xsd:choice>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:complexType name="utteranceType" mixed="true">
+		<xsd:sequence>
+			<xsd:group ref="markUpGroup" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
 	
-		<xs:element name="setup">
-			<xs:complexType mixed="true">
-				<xs:all>
-					<xs:element name="announcer" type="xs:string" minOccurs="0" maxOccurs="unbounded">
-					<xs:element name="audience" type="xs:string" minOccurs="0" maxOccurs="unbounded">
-				</xs:all>
-			</xs:complexType>
-		</xs:element>
-		
-		<xs:element name="punchline">
-			<xs:complexType mixed="true">
-			
-			</xs:complexType>
-		</xs:element>
-		
-    </xs:sequence>
-  </xs:complexType>
-</xs:element>
+	<xsd:complexType name="punchlineType">
+		<xsd:complexContent>
+			<xsd:extension base="utteranceType">
+				<xsd:attribute name="jokeType" use="required">
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:enumeration value="irony"/>
+							<xsd:enumeration value="character"/>
+							<xsd:enumeration value="reference"/>
+							<xsd:enumeration value="shock"/>
+							<xsd:enumeration value="parody"/>
+							<xsd:enumeration value="hyperbole"/>
+							<xsd:enumeration value="wordplay"/>
+							<xsd:enumeration value="analogy"/>
+							<xsd:enumeration value="madcap"/>
+							<xsd:enumeration value="meta-humor"/>
+							<xsd:enumeration value="misplaced focus"/>
+							<xsd:enumeration value="other"/>
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:attribute>
+				<xsd:attribute name="reference" type="xsd:anyURI"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
 
-</xs:schema> 
+	<xsd:group name="markUpGroup">
+		<xsd:choice>
+			<xsd:element name="announcer" type="xsd:string"/>
+			<xsd:element name="audience" type="audienceType"/>
+			<xsd:element name="sound" type="xsd:string"/>
+			<xsd:element name="profanity" type="xsd:string"/>
+			<xsd:element name="crowdwork" type="xsd:string"/>
+			<xsd:element name="directSpeech" type="xsd:string"/>
+			<xsd:element name="reference" type="referenceType"/>
+		</xsd:choice>
+	</xsd:group>
+	
+	<xsd:complexType name="referenceType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attribute name="referenced">
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:enumeration value="person"/>
+							<xsd:enumeration value="place"/>
+							<xsd:enumeration value="event"/>
+							<xsd:enumeration value="concept"/>
+							<xsd:enumeration value="other"/>
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:attribute>
+				<xsd:attribute name="link" type="xsd:anyURI"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="audienceType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attribute name="reaction">
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:enumeration value="heckle"/>
+							<xsd:enumeration value="cheer"/>
+							<xsd:enumeration value="boo"/>
+							<xsd:enumeration value="answer"/>
+							<xsd:enumeration value="other"/>
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	
+	
+
+</xsd:schema>
