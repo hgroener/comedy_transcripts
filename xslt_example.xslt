@@ -3,7 +3,10 @@
 
  <xsl:template match="/">
    <xsl:text>&#xa;</xsl:text>
-   <doc  xmlns="http://www.w3.org/TR/html4/">
+   <doc
+     xmlns="https://www.w3schools.com"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="https://www.w3schools.com xsd_example.xsd">
    <xsl:text>&#xa;</xsl:text>
    <head>
    <xsl:text>&#xa;</xsl:text>
@@ -45,11 +48,11 @@
  <xsl:template match="//title">
    <xsl:analyze-string select="." regex="(.*): (.*) \((\d+)\)">
      <xsl:matching-substring>
-       <comedian><xsl:value-of select="regex-group(1)"/></comedian>
+       <comedian xmlns="https://www.w3schools.com"><xsl:value-of select="regex-group(1)"/></comedian>
        <xsl:text>&#xa;</xsl:text>
-       <title><xsl:value-of select="regex-group(2)"/></title>
+       <title xmlns="https://www.w3schools.com"><xsl:value-of select="regex-group(2)"/></title>
        <xsl:text>&#xa;</xsl:text>
-       <year><xsl:value-of select="regex-group(3)"/></year>
+       <year xmlns="https://www.w3schools.com"><xsl:value-of select="regex-group(3)"/></year>
      </xsl:matching-substring>
    </xsl:analyze-string>
    

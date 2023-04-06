@@ -32,18 +32,19 @@
 					<!-- can contain text outside of joke elements -->
 					<xsd:complexType mixed="true">
 						<xsd:sequence>
+							<xsd:element name="introduction" type="utteranceType" minOccurs="0"/>
 							<xsd:choice minOccurs="0" maxOccurs="unbounded">
 								<xsd:group ref="markUpGroup"/>
 								<xsd:element name="joke">
-									<!-- not mixed because jokes should only consist of a setup and a punchline - might need to be changed later. -->
-									<xsd:complexType>
+									<xsd:complexType mixed="true">
 										<xsd:sequence>
 											<xsd:element name="setup" type="utteranceType"/>
-											<xsd:element name="punchline" type="punchlineType"/>
+											<xsd:element name="punchline" type="punchlineType" maxOccurs="unbounded"/>
 										</xsd:sequence>
 									</xsd:complexType>
 								</xsd:element>
 							</xsd:choice>
+							<xsd:element name="conclusion" type="utteranceType" minOccurs="0"/>
 						</xsd:sequence>
 					</xsd:complexType>
 				</xsd:element>
@@ -90,15 +91,17 @@
 			<xsd:element name="sound" type="xsd:string"/>
 			<xsd:element name="profanity" type="xsd:string"/>
 			<xsd:element name="crowdwork" type="xsd:string"/>
-			<xsd:element name="directSpeech" type="xsd:string"/>
+			<xsd:element name="directSpeech" type="utteranceType"/>
 			<xsd:element name="reference" type="referenceType"/>
+			<xsd:element name="toAudience" type="xsd:string"/>
+			<xsd:element name="humorousPhrasing" type="phrasingType"/>
 		</xsd:choice>
 	</xsd:group>
 	
 	<xsd:complexType name="referenceType">
 		<xsd:simpleContent>
 			<xsd:extension base="xsd:string">
-				<xsd:attribute name="referenced">
+				<xsd:attribute name="referenced" use="required">
 					<xsd:simpleType>
 						<xsd:restriction base="xsd:string">
 							<xsd:enumeration value="person"/>
@@ -117,13 +120,32 @@
 	<xsd:complexType name="audienceType">
 		<xsd:simpleContent>
 			<xsd:extension base="xsd:string">
-				<xsd:attribute name="reaction">
+				<xsd:attribute name="reaction" use="required">
 					<xsd:simpleType>
 						<xsd:restriction base="xsd:string">
 							<xsd:enumeration value="heckle"/>
 							<xsd:enumeration value="cheer"/>
 							<xsd:enumeration value="boo"/>
 							<xsd:enumeration value="answer"/>
+							<xsd:enumeration value="other"/>
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="phrasingType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attribute name="type" use="required">
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:enumeration value="redundant"/>
+							<xsd:enumeration value="absurd"/>
+							<xsd:enumeration value="vocabulary"/>
+							<xsd:enumeration value="innuendo"/>
+							<xsd:enumeration value="inappropriate"/>
 							<xsd:enumeration value="other"/>
 						</xsd:restriction>
 					</xsd:simpleType>
