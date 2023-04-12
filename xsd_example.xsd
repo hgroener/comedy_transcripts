@@ -35,14 +35,23 @@
 							<xsd:element name="introduction" type="utteranceType" minOccurs="0"/>
 							<xsd:choice minOccurs="0" maxOccurs="unbounded">
 								<xsd:group ref="markUpGroup"/>
-								<xsd:element name="joke">
+								<xsd:element name="bit" minOccurs="0" maxOccurs="unbounded">
 									<xsd:complexType mixed="true">
-										<xsd:sequence>
-											<xsd:element name="setup" type="utteranceType"/>
-											<xsd:element name="punchline" type="punchlineType" maxOccurs="unbounded"/>
-										</xsd:sequence>
+										<xsd:choice minOccurs="0" maxOccurs="unbounded">
+											<xsd:group ref="markUpGroup"/>
+											<xsd:element name="joke">
+												<xsd:complexType mixed="true">
+													<xsd:sequence>
+														<xsd:element name="setup" type="utteranceType"/>
+														<xsd:element name="punchline" type="punchlineType" maxOccurs="unbounded"/>
+													</xsd:sequence>
+												</xsd:complexType>
+											</xsd:element>
+										</xsd:choice>
+										<xsd:attribute name="content" type="xsd:string"/>
 									</xsd:complexType>
 								</xsd:element>
+
 							</xsd:choice>
 							<xsd:element name="conclusion" type="utteranceType" minOccurs="0"/>
 						</xsd:sequence>

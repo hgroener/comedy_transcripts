@@ -17,6 +17,7 @@
             <toAudience>Hello. Hello, Chicago. Nice to see you again. Thank you.
             That was very nice. Thank you. Look, now, you’re a wonderful crowd, but I need you to
             keep your energy up the entire show, okay? Because… No, no, no. Thank you.</toAudience></introduction>
+        <bit>
         <joke>
             <setup>Some crowds… some crowds, they have big energy in the beginning and then they run
                 out of places to go. So… I don’t judge those crowds, by the way, okay? We’ve all
@@ -33,6 +34,8 @@
                 forget the lesson you just learned with “Happy.” You’re like, “Yeah, but the past is
                 the past. Big-ass ‘B’. Surely more letters will fit in the same space.” </punchline>
         </joke>
+        </bit>
+        <bit>
         <joke>
             <setup><toAudience>You’re very friendly here in Chicago.</toAudience> I mean, we’re all
                 violent here, but you’re very friendly. No, really. And I don’t like confrontation,
@@ -46,7 +49,9 @@
             <punchline jokeType="shock">I’m so open and vulnerable. I look like a doll that you
                 point out molestation on. “Show us on this white comedian where the man touched
                 you.”</punchline>
-        </joke> It’s been a while since I’ve been home to Chicago. <joke>
+        </joke> It’s been a while since I’ve been home to Chicago. </bit>
+        <bit content="marriage">
+        <joke>
             <setup>I got married since then. <toAudience>Thank
                 you.</toAudience>
                 <humorousPhrasing type="redundant">I married my wife.</humorousPhrasing> I love
@@ -138,7 +143,8 @@
             <punchline jokeType="reference"
                 reference="https://en.wikipedia.org/wiki/Dan_Levy_(American_comedian)">“That’s
                 actually stand-up comedian Dan Levy. He was the host of MTV’s Your Face or
-                Mine?”</punchline></joke>
+                Mine?”</punchline></joke></bit>
+        <bit content="altar boy story">
         <joke><setup>I saw a lot of Catholic weddings, though, because I was an altar boy… And a
                 hush falls over the room. Isn’t it weird how that became a scandalous thing? That
                 was just <profanity>some boring shit</profanity> I had to do on weekends.</setup>
@@ -165,7 +171,8 @@
                 decides to go, <directSpeech>“Aw, she’s ugly!”</directSpeech></punchline>
             <punchline jokeType="other">Hopefully the videographer knew some sound editing so he
                 could fix it to be like, <directSpeech>“Aw, she’s beautiful. She’s
-                    enchanting.”</directSpeech></punchline></joke>
+                    enchanting.”</directSpeech></punchline></joke></bit>
+        <bit content="catholic church">
         <joke><setup>I grew up Catholic. I don’t go to church anymore. But I went on Christmas Eve
                 with my parents,</setup>
             <punchline jokeType="reference">’cause you know how you lie to your
@@ -202,7 +209,8 @@
                     you.'”</directSpeech></setup>
             <punchline jokeType="reference">And they were like… “What? Oh. Uh, yeah. And also you
                 should have some.”</punchline><punchline jokeType="madcap">“Hey, that’s good. Let’s
-                keep that for 2,000 years. And then change it to trick John."</punchline></joke>
+                    keep that for 2,000 years. And then change it to trick John."</punchline></joke></bit>
+        <bit content="Petunia">
         <joke><setup>My wife and I don’t have any children, we have a dog. We have a little puppy
                 named Petunia. She’s a tiny little French bulldog puppy. I like having a puppy
                 that’s a bulldog,</setup><punchline jokeType="madcap"> ’cause it’s like having a
@@ -259,7 +267,8 @@
                     dinner.”</directSpeech></punchline>
             <punchline jokeType="character">Meanwhile, Petunia’s just staring at us with her
                 <reference referenced="person">Paul Giamatti</reference> face, like… “You’re not
-                eating dinner, cocksucker. Dish, now.”</punchline></joke>
+                eating dinner, cocksucker. Dish, now.”</punchline></joke></bit>
+        <bit content="buying a house">
         <joke><setup>I have a wife and a dog, and we just bought a house. We have a new house. It
                 was built in the ’20s, but it was flipped in 2014.</setup>
             <punchline jokeType="misplaced focus">Which means it’s haunted, but it has a lovely
@@ -327,7 +336,7 @@
                     wife!”</directSpeech></punchline></joke>
         <joke><setup>I didn’t mean to make it sound like we don’t want children.</setup>
             <punchline jokeType="other">We don’t, but I didn’t mean to make it sound like
-                that.</punchline></joke> See, I just don’t think babies like me very much. Sometimes
+                that.</punchline></joke></bit> See, I just don’t think babies like me very much. Sometimes
         babies will point at me, and I don’t care for that shit at all. Like, I’ll be on an
         elevator, and a baby will be there in its big, like, stroller activity tray, just, like,
         working on one Cheerio with Bobby Fischer-like intensity. And it’ll look up at me and go… I
