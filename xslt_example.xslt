@@ -4,9 +4,9 @@
  <xsl:template match="/">
    <xsl:text>&#xa;</xsl:text>
    <doc
-     xmlns="https://www.w3schools.com"
+     xmlns="https://www.xmlaugh.com"
      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xsi:schemaLocation="https://www.w3schools.com xsd_example.xsd">
+     xsi:schemaLocation="https://www.xmlaugh.com xsd_example.xsd">
    <xsl:text>&#xa;</xsl:text>
    <head>
    <xsl:text>&#xa;</xsl:text>

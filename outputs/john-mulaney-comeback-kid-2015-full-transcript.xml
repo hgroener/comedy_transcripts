@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<doc xmlns="https://www.w3schools.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="https://www.w3schools.com xsd_example.xsd">
+<doc xmlns="https://www.xmlaugh.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://www.xmlaugh.com xsd_example.xsd">
     <head>
         <lang>en-GB</lang>
         <comedian>John Mulaney</comedian>

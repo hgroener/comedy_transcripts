@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="https://www.w3schools.com"
-	xmlns="https://www.w3schools.com" elementFormDefault="qualified">
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="https://www.xmlaugh.com"
+	xmlns="https://www.xmlaugh.com" elementFormDefault="qualified">
 
 
 	<xsd:simpleType name="nonNegativeInteger" id="nonNegativeInteger">
